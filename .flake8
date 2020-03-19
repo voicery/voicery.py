@@ -1,0 +1,9 @@
+[flake8]
+max-line-length = 80
+...
+select = C,E,F,W,B,B950
+
+# W503 - https://github.com/psf/black/issues/43
+# E203 - https://github.com/psf/black/issues/315
+# E501 - prefer Bugbear B950
+ignore = W503,E203,E501
