@@ -40,7 +40,12 @@ class Voicery:
         if self.available_speakers is not None:
             return self.available_speakers
 
-        result = requests.get(VOICERY_URL + "/speakers").json()
+        if self.key is None:
+            headers = {}
+        else:
+            headers = {"Authorization": f"Bearer {self.key}"}
+
+        result = requests.get(VOICERY_URL + "/speakers", headers=headers).json()
 
         self.available_speakers = {
             speaker["id"]: Speaker(
